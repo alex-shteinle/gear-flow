@@ -1,0 +1,79 @@
+buildscript {
+    apply from: '../deps.gradle'
+}
+
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'com.google.devtools.ksp'
+}
+
+android {
+    namespace 'ls.gear.flow.data'
+    compileSdk build_versions.compile_sdk
+
+    defaultConfig {
+        minSdk build_versions.min_sdk
+        targetSdk build_versions.target_sdk
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+
+        buildConfigField "String", "GIT_BRANCH", "\"${rootProject.ext.gitBranch()}\""
+        buildConfigField "String", "GIT_LAST_COMMIT_MESSAGE", "\"${rootProject.ext.gitLastCommitMessage()}\""
+        buildConfigField "String", "GIT_LAST_COMMIT_HASH", "\"${rootProject.ext.gitLastCommitHash()}\""
+    }
+
+    buildTypes {
+        release {
+            debuggable false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            debuggable true
+        }
+    }
+    compileOptions {
+        coreLibraryDesugaringEnabled true
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        buildConfig true
+    }
+}
+
+dependencies {
+    coreLibraryDesugaring deps.desugar
+
+    implementation project(':domain')
+
+    // Kotlin
+    implementation deps.kotlin.coroutines_android
+
+    // DI
+    implementation deps.koin.android
+
+    // Crypto
+    implementation deps.androidx.security_crypto
+
+    // Networking
+    implementation deps.retrofit
+    implementation deps.okhttp_logging
+    implementation deps.moshi_converter
+    implementation deps.moshi.core
+    ksp deps.moshi.codegen
+
+    // Room
+    implementation deps.androidx.room.runtime
+    implementation deps.androidx.room.ktx
+    ksp deps.androidx.room.compiler
+
+    // Testing
+    testImplementation deps.test.junit
+}

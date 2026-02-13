@@ -1,0 +1,73 @@
+import io.gitlab.arturbosch.detekt.Detekt
+import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
+
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+plugins {
+    id 'com.android.application' version '8.0.2' apply false
+    id 'com.android.library' version '8.0.2' apply false
+    id 'org.jetbrains.kotlin.android' version '1.7.20' apply false
+    id 'org.jetbrains.kotlin.jvm' version '1.7.20' apply false
+    id "org.jetbrains.kotlin.plugin.parcelize" version "1.7.20" apply false
+    id 'io.gitlab.arturbosch.detekt' version '1.23.0' apply false
+    id 'com.google.devtools.ksp' version '1.7.20-1.0.8' apply false
+}
+
+// region detekt
+def projectSource = file(projectDir)
+def configFile = files("$rootDir/config/detekt/detekt.yml")
+def baselineFile = file("$rootDir/config/detekt/baseline.xml")
+def kotlinFiles = "**/*.kt"
+def resourceFiles = "**/resources/**"
+def buildFiles = "**/build/**"
+
+apply plugin: 'io.gitlab.arturbosch.detekt'
+apply from: 'deps.gradle'
+
+tasks.register("detektAll", Detekt) {
+    def autoFix = project.hasProperty('detektAutoFix')
+
+    description = "Custom DETEKT build for all modules"
+    parallel = true
+    ignoreFailures = false
+    autoCorrect = autoFix
+    buildUponDefaultConfig = true
+    setSource(projectSource)
+    baseline.set(baselineFile)
+    config.setFrom(configFile)
+    include(kotlinFiles)
+    exclude(resourceFiles, buildFiles)
+    reports {
+        html.enabled = true
+        xml.enabled = false
+        txt.enabled = false
+    }
+}
+
+dependencies {
+    detektPlugins "io.gitlab.arturbosch.detekt:detekt-formatting:$versions.detekt"
+    detektPlugins "com.twitter.compose.rules:detekt:0.0.26"
+}
+
+tasks.register("detektGenerateBaseline", DetektCreateBaselineTask) {
+    description = "Custom DETEKT build to build baseline for all modules"
+    parallel = true
+    ignoreFailures = false
+    buildUponDefaultConfig = true
+    setSource(projectSource)
+    baseline.set(baselineFile)
+    config.setFrom(configFile)
+    include(kotlinFiles)
+    exclude(resourceFiles, buildFiles)
+}
+// end region detekt
+
+// region Git
+ext.gitBranch = { "git rev-parse --abbrev-ref HEAD".execute().text.trim() }
+ext.gitLastCommitMessage = {
+    // Escaping symbols that can break the string in Java code.
+    String regex = /(["\\])/
+    "git show-branch --no-name HEAD".execute().text.trim().replaceAll(regex, '\\\\$1')
+}
+ext.gitLastCommitHash = { "git rev-parse --short HEAD".execute().text.trim() }
+// end region Git

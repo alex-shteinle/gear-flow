@@ -1,0 +1,103 @@
+def build_versions = [:]
+build_versions.min_sdk = 23
+build_versions.compile_sdk = 33
+build_versions.target_sdk = 33
+ext.build_versions = build_versions
+
+def versions = [:]
+versions.kotlin = "1.7.2"
+versions.kotlinx_immutable = "0.3.5"
+versions.desugar = "2.0.3"
+versions.androidx = [
+        core : "1.10.1",
+        compose_bom : "2023.01.00",
+        compose_navigation : "2.6.0",
+        activity_compose : "1.7.2",
+        lifecycle_runtime_ktx : "2.6.1",
+        lifecycle_compose : "2.6.1",
+        security_crypto : "1.0.0",
+        biometric : "1.1.0",
+        room : "2.5.2"
+]
+versions.accompanist = [
+        nav_animation : "0.30.1",
+        system_ui_controller : "0.30.1"
+]
+versions.koin = "3.4.3"
+versions.retrofit = "2.9.0"
+versions.moshi = "1.14.0"
+versions.okhttp_logging = "4.11.0"
+versions.junit = "4.13.2"
+versions.mockito = "4.1.0"
+versions.mockito_inline = "3.11.2"
+versions.detekt = "1.23.0"
+versions.firebase = "32.2.3"
+ext.versions = versions
+
+def plugin_deps = [:]
+ext.plugin_deps = plugin_deps
+
+def deps = [:]
+deps.kotlin = [
+        bom : "org.jetbrains.kotlin:kotlin-bom:$versions.kotlin",
+        coroutines_bom : "org.jetbrains.kotlinx:kotlinx-coroutines-bom:$versions.kotlin",
+        coroutines_core : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.kotlin",
+        coroutines_android : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.kotlin"
+]
+deps.kotlinx_immutable = "org.jetbrains.kotlinx:kotlinx-collections-immutable:$versions.kotlinx_immutable"
+deps.androidx = [
+        core : "androidx.core:core-ktx:$versions.androidx.core",
+        compose : [
+                bom : "androidx.compose:compose-bom:$versions.androidx.compose_bom",
+                ui : "androidx.compose.ui:ui",
+                ui_tooling : "androidx.compose.ui:ui-tooling",
+                ui_graphics : "androidx.compose.ui:ui-graphics",
+                ui_tooling_preview : "androidx.compose.ui:ui-tooling-preview",
+                icons_ext : "androidx.compose.material:material-icons-extended",
+                material : "androidx.compose.material:material",
+                material3 : "androidx.compose.material3:material3",
+                ui_test_junit4 : "androidx.compose.ui:ui-test-junit4",
+                ui_test_manifest : "androidx.compose.ui:ui-test-manifest",
+                navigation : "androidx.navigation:navigation-compose:$versions.androidx.compose_navigation"
+        ],
+        activity_compose : "androidx.activity:activity-compose:$versions.activity_compose",
+        lifecycle_runtime_ktx : "androidx.lifecycle:lifecycle-runtime-ktx:$versions.lifecycle_runtime_ktx",
+        lifecycle_compose : "androidx.lifecycle:lifecycle-runtime-compose:$versions.lifecycle_compose",
+        security_crypto : "androidx.security:security-crypto:$versions.androidx.security_crypto",
+        biometric: "androidx.biometric:biometric:$versions.androidx.biometric",
+        room : [
+                runtime : "androidx.room:room-runtime:$versions.androidx.room",
+                compiler : "androidx.room:room-compiler:$versions.androidx.room",
+                ktx : "androidx.room:room-ktx:$versions.androidx.room"
+        ]
+]
+deps.accompanist = [
+        nav_animation : "com.google.accompanist:accompanist-navigation-animation:$versions.accompanist.nav_animation",
+        system_ui_controller : "com.google.accompanist:accompanist-systemuicontroller:$versions.accompanist.system_ui_controller"
+]
+deps.koin = [
+        android: "io.insert-koin:koin-android:$versions.koin",
+        compose: "io.insert-koin:koin-androidx-compose:$versions.koin",
+        test : "io.insert-koin:koin-test:$versions.koin",
+        test_junit : "io.insert-koin:koin-test-junit4:$versions.koin"
+]
+deps.retrofit = "com.squareup.retrofit2:retrofit:$versions.retrofit"
+deps.moshi_converter = "com.squareup.retrofit2:converter-moshi:$versions.retrofit"
+deps.okhttp_logging = "com.squareup.okhttp3:logging-interceptor:$versions.okhttp_logging"
+deps.moshi = [
+        core : "com.squareup.moshi:moshi:$versions.moshi",
+        codegen : "com.squareup.moshi:moshi-kotlin-codegen:$versions.moshi"
+]
+deps.detekt = "io.gitlab.arturbosch.detekt:detekt-formatting:$versions.detekt"
+deps.desugar = "com.android.tools:desugar_jdk_libs:$versions.desugar"
+deps.firebase = [
+        bom : "com.google.firebase:firebase-bom:$versions.firebase",
+        crashlytics : "com.google.firebase:firebase-crashlytics-ktx"
+]
+deps.test = [
+        junit : "junit:junit:${versions.junit}",
+        mockito : "org.mockito.kotlin:mockito-kotlin:$versions.mockito",
+        mockito_inline : "org.mockito:mockito-inline:$versions.mockito_inline",
+        coroutine : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$versions.kotlin"
+]
+ext.deps = deps

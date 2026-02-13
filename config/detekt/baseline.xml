@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<SmellBaseline>
+  <ManuallySuppressedIssues>
+    <ID>MagicNumber:UserItemRepositoryImpl.kt$UserItemRepositoryImpl$5</ID>
+    <ID>ForbiddenComment:UserItem.kt$UserItem$// TODO: Refactor after api changes</ID>
+    <ID>MagicNumber:UserItem.kt$UserItem$2024</ID>
+    <ID>MagicNumber:UserItem.kt$UserItem$4</ID>
+    <ID>MagicNumber:UserItem.kt$UserItem$10</ID>
+    <ID>CyclomaticComplexMethod:MainScreen.kt$@OptIn(ExperimentalAnimationApi::class) @Composable fun MainScreen( viewModel: MainViewModel = koinViewModel(), gearFlowNavigator: MainGearFlowNavigator = get(), logger: GearFlowLogger = get() )</ID>
+    <ID>CyclomaticComplexMethod:PinCodeSetupScreen.kt$@Composable fun PinCodeSetupScreen( viewModel: PinSetupViewModel = koinViewModel(), validator: PinCodeValidator = get(), bioMetricAuthManager: BioMetricAuthManager = get(), onPinSetupSuccess: () -> Unit )</ID>
+    <ID>ForbiddenComment:StuffItem.kt$StuffItem$// TODO: Refactor after api changes</ID>
+    <ID>ForbiddenComment:ItemGroupProviderImpl.kt$ItemGroupProviderImpl$// TODO: Remove after api changes</ID>
+    <ID>SwallowedException:DemandItemRepositoryImpl.kt$DemandItemRepositoryImpl$exception : Throwable</ID>
+    <ID>TooGenericExceptionCaught:DemandItemRepositoryImpl.kt$DemandItemRepositoryImpl$exception : Throwable</ID>
+    <ID>SwallowedException:DemandItemRepositoryImpl.kt$DemandItemRepositoryImpl$exception: Throwable</ID>
+    <ID>TooGenericExceptionCaught:DemandItemRepositoryImpl.kt$DemandItemRepositoryImpl$exception: Throwable</ID>
+    <ID>ForbiddenComment:DemandItemExt.kt$// TODO: Update after api changes or remove</ID>
+    <ID>UnusedPrivateProperty:UserIdRepositoryImpl.kt$UserIdRepositoryImpl$private val idWithItems = "bf03e017-ac73-4ab5-b362-5ee5de494053"</ID>
+    <ID>UnusedPrivateProperty:UserIdRepositoryImpl.kt$UserIdRepositoryImpl$private val idWithoutItems = "d3696873-526b-4873-9e83-7470ffa6664e"</ID>
+    <ID>UnusedPrivateProperty:DataModule.kt$private const val BASE_URL_DEV = "https://10.2.0.10"</ID>
+    <ID>SwallowedException:LoginRepositoryImpl.kt$LoginRepositoryImpl$exception: Exception</ID>
+    <ID>TooGenericExceptionCaught:LoginRepositoryImpl.kt$LoginRepositoryImpl$exception: Exception</ID>
+    <ID>SwallowedException:NormRepositoryImpl.kt$NormRepositoryImpl$exception: Throwable</ID>
+    <ID>TooGenericExceptionCaught:NormRepositoryImpl.kt$NormRepositoryImpl$exception: Throwable</ID>
+    <ID>TooGenericExceptionCaught:AppVersionRepositoryImpl.kt$AppVersionRepositoryImpl$exception: Exception</ID>
+    <ID>TooGenericExceptionCaught:UserRepositoryImpl.kt$UserRepositoryImpl$throwable: Throwable</ID>
+    <ID>UnusedPrivateProperty:DataModule.kt$private const val BASE_URL_DEV = "https://provisioning-myno-dev.oak.in.ua"</ID>
+  </ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>MagicNumber:Color.kt$0x3C3C434D</ID>
+    <ID>MagicNumber:Color.kt$0x3C3C435C</ID>
+    <ID>MagicNumber:Color.kt$0xFF1D1B20</ID>
+    <ID>MagicNumber:Color.kt$0xFF7D5260</ID>
+    <ID>MagicNumber:Color.kt$0xFF8E8E93</ID>
+    <ID>MagicNumber:Color.kt$0xFFC5C5C7</ID>
+    <ID>MagicNumber:Color.kt$0xFFEFB8C8</ID>
+    <ID>MagicNumber:Color.kt$0xFFEFEFF0</ID>
+    <ID>MagicNumber:Color.kt$0xFFF2F2F7</ID>
+    <ID>MagicNumber:Font.kt$151f</ID>
+    <ID>MagicNumber:Font.kt$203f</ID>
+    <ID>MagicNumber:Font.kt$468f</ID>
+    <ID>MagicNumber:Font.kt$514f</ID>
+    <ID>MagicNumber:Font.kt$666f</ID>
+    <ID>MagicNumber:Font.kt$738f</ID>
+    <ID>MagicNumber:Font.kt$750f</ID>
+    <ID>MagicNumber:Font.kt$79f</ID>
+    <ID>MagicNumber:Font.kt$800</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Chest$138</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Chest$4</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Chest$82</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Head$54</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Head$64</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Height$155</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Height$203</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Height$3</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Insole$217</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Insole$225</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Insole$226</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Insole$230</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Insole$232</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Insole$233</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Insole$235</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Insole$237</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Insole$240</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Insole$243</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Insole$245</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Insole$247</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Insole$250</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Insole$255</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Insole$257</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Insole$262</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Insole$263</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Insole$265</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Insole$266</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Insole$270</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Insole$274</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Insole$275</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Insole$277</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Insole$278</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Insole$283</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Insole$285</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Insole$287</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Insole$290</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Insole$291</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Insole$292</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Insole$295</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Insole$297</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Insole$300</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Insole$303</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Insole$304</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Insole$305</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Insole$307</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Insole$308</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Insole$315</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Neck$36</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Neck$47</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Shoe$37</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Shoe$47</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Sleeve$61</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Sleeve$71</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Waist$138</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Waist$4</ID>
+    <ID>MagicNumber:TypicalSize.kt$TypicalSize.Waist$70</ID>
+    <ID>SwallowedException:PinCodeRepositoryImpl.kt$PinCodeRepositoryImpl$error: Throwable</ID>
+    <ID>SwallowedException:SettingsRepositoryImpl.kt$SettingsRepositoryImpl$error: Throwable</ID>
+    <ID>TooGenericExceptionCaught:PinCodeRepositoryImpl.kt$PinCodeRepositoryImpl$error: Throwable</ID>
+    <ID>TooGenericExceptionCaught:Result.kt$ex: Exception</ID>
+    <ID>TooGenericExceptionCaught:SettingsRepositoryImpl.kt$SettingsRepositoryImpl$error: Throwable</ID>
+    <ID>TooGenericExceptionCaught:UserRepositoryImpl.kt$UserRepositoryImpl$ex: Throwable</ID>
+  </CurrentIssues>
+</SmellBaseline>

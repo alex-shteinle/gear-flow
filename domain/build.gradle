@@ -1,0 +1,23 @@
+buildscript {
+    apply from: '../deps.gradle'
+}
+
+plugins {
+    id 'java-library'
+    id 'org.jetbrains.kotlin.jvm'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+dependencies {
+    api project(':core')
+
+    implementation deps.kotlin.coroutines_core
+    testImplementation deps.test.junit
+    testImplementation deps.test.mockito
+    testImplementation deps.test.mockito_inline
+    testImplementation deps.test.coroutine
+}
