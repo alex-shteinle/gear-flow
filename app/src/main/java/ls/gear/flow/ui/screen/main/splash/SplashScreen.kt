@@ -16,8 +16,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import org.koin.androidx.compose.koinViewModel
-import org.koin.compose.koinInject
 import ls.gear.flow.R
 import ls.gear.flow.navigation.Destination
 import ls.gear.flow.navigation.NavOptionType
@@ -25,7 +23,8 @@ import ls.gear.flow.navigation.navigator.GearFlowNavigator
 import ls.gear.flow.ui.screen.main.splash.state.SplashAction
 import ls.gear.flow.ui.screen.main.splash.state.SplashState
 import ls.gear.flow.ui.theme.robotoFlexFontFamily
-import java.util.Locale
+import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.koinInject
 
 @Composable
 fun SplashScreen(
