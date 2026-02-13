@@ -47,14 +47,13 @@ class GetRemoteUserUseCaseTest {
         normRepository
     )
 
-    @OptIn(ExperimentalStdlibApi::class)
     private val testStuffItem = StuffItem(
         id = ITEM_ID_TEST,
         name = "testItem",
         quantity = 2,
         measureUnit = "unit",
         issueDate = null,
-        type = StuffItemGroupType.entries.random()
+        type = StuffItemGroupType.values().random()
     )
 
     private val testUser = User(

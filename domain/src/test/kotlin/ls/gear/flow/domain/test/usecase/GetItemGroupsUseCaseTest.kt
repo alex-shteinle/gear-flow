@@ -3,21 +3,24 @@ package ls.gear.flow.domain.test.usecase
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
-import org.junit.runner.RunWith
-import org.mockito.junit.MockitoJUnitRunner
 import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
 import ls.gear.flow.domain.model.PersonalSizes
 import ls.gear.flow.domain.model.StuffItem
 import ls.gear.flow.domain.model.StuffItemGroupType
 import ls.gear.flow.domain.model.User
+import ls.gear.flow.domain.repository.UserCacheRepository
 import ls.gear.flow.domain.usecase.item.GetItemGroupsUseCase
 import ls.gear.flow.domain.usecase.user.GetLocalUserUseCase
 
-@RunWith(MockitoJUnitRunner::class)
 class GetItemGroupsUseCaseTest {
 
-    private val items = (1..4).map { createStuffItem(it) }
+    private val items = listOf(
+        createStuffItem(1, StuffItemGroupType.HEADWEAR),
+        createStuffItem(2, StuffItemGroupType.UNIFORM),
+        createStuffItem(3, StuffItemGroupType.FOOTWEAR),
+        createStuffItem(4, StuffItemGroupType.EQUIPMENT)
+    )
 
     private val mockedUser = User(
         id = "",
@@ -33,40 +36,42 @@ class GetItemGroupsUseCaseTest {
         items = items.map { it.copy(type = StuffItemGroupType.EQUIPMENT) }
     )
 
-    @OptIn(ExperimentalStdlibApi::class)
-    private fun createStuffItem(id: Int): StuffItem {
+    private fun createStuffItem(id: Int, type: StuffItemGroupType): StuffItem {
         return StuffItem(
             id = id.toString(),
             name = "",
             quantity = 1,
             measureUnit = "",
             issueDate = null,
-            type = StuffItemGroupType.entries.random()
+            type = type
         )
     }
 
     @Test
     fun return_empty_list_if_there_is_no_items() {
-        val getLocalUserUseCase = mock<GetLocalUserUseCase> {
-            on { invoke() } doReturn mockedUser.copy(items = emptyList())
+        val userCacheRepository = mock<UserCacheRepository> {
+            on { get() } doReturn mockedUser.copy(items = emptyList())
         }
+        val getLocalUserUseCase = GetLocalUserUseCase(userCacheRepository)
         assertTrue(GetItemGroupsUseCase(getLocalUserUseCase).invoke().isEmpty())
     }
 
     @Test
     fun return_one_group_if_all_items_has_same_typeGroupName() {
-        val getLocalUserUseCase = mock<GetLocalUserUseCase> {
-            on { invoke() } doReturn mockedUserWithOneTypeItems
+        val userCacheRepository = mock<UserCacheRepository> {
+            on { get() } doReturn mockedUserWithOneTypeItems
         }
+        val getLocalUserUseCase = GetLocalUserUseCase(userCacheRepository)
         assertEquals(1, GetItemGroupsUseCase(getLocalUserUseCase).invoke().size)
         assertEquals(StuffItemGroupType.EQUIPMENT, GetItemGroupsUseCase(getLocalUserUseCase).invoke().first().type)
     }
 
     @Test
     fun return_same_number_groups_as_number_of_items_with_different_typeGroupName() {
-        val getLocalUserUseCase = mock<GetLocalUserUseCase> {
-            on { invoke() } doReturn mockedUser
+        val userCacheRepository = mock<UserCacheRepository> {
+            on { get() } doReturn mockedUser
         }
+        val getLocalUserUseCase = GetLocalUserUseCase(userCacheRepository)
         assertEquals(items.size, GetItemGroupsUseCase(getLocalUserUseCase).invoke().size)
     }
 }

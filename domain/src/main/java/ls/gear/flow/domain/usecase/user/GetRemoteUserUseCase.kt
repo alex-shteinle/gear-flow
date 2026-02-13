@@ -31,13 +31,12 @@ class GetRemoteUserUseCase(
         loginRepository.login().getOrThrow()
         val users = userRepository.getAll().getOrThrow()
         val user = findUserWithItemsOrFirst(users)
-        val updatedUser = updateUserSizes(user).apply {
-            val norms = normRepository.getByUserId(user.id).getOrNull()?.items
-            norms?.let {
-                val items = mergeItemsAndNorms(this.items, it)
-                copy(items = items)
-            }
-        }
+        val updatedUserWithSizes = updateUserSizes(user)
+        val norms = normRepository.getByUserId(user.id).getOrNull()?.items
+        val updatedUser = norms?.let {
+            val items = mergeItemsAndNorms(updatedUserWithSizes.items, it)
+            updatedUserWithSizes.copy(items = items)
+        } ?: updatedUserWithSizes
         userCacheRepository.update(updatedUser)
         updatedUser
     }
